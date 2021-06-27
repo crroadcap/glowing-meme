@@ -6,14 +6,14 @@ namespace JapApp.Repositories
 {  
     public interface IUserRepository
     {
-        event EventHandler<User> OnAppointmentCreated;
-        event EventHandler<User> OnAppointmentOccuring;
+        event EventHandler<User> OnUserAdded;
+        event EventHandler<User> OnUserDeleted;
+        event EventHandler<User> OnUserUpdated;
 
-        Task<List<User>> GetFriendsList();
-        Task AddAcceptedUser(User user);
-        Task UpdateAccpetedUser(User user);
-        Task AddOrUpdateAcceptedUser(User user);
-        Task RemoveAcceptedUser(User user);
-        Task ScheduleMeeting();
+        Task CreateUser(User user);
+        Task UpdateUser(User user);
+        Task DeleteUser(User user);
+        Task<List<User>> GetAllUsers();
+
     }
 }

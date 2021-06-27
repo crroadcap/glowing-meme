@@ -67,5 +67,13 @@ namespace JapApp.Repositories
             await AddAppToUser(apptoUser);
             OnAppointmentToUserDeleted?.Invoke(this, apptoUser);
         }
+
+        public async Task<List<AppointmentToUsers>> GetAllAppointmentToUsers()
+        {
+            await CreateConnection();
+            return await connection.Table<AppointmentToUsers>().ToListAsync();
+        }
+
+       
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SQLite;
+using JapApp.Repositories;
 
 namespace JapApp.Models
 {
@@ -9,9 +10,11 @@ namespace JapApp.Models
         [PrimaryKey, AutoIncrement]
         int ID { get; set; }
         public DateTime ScheduledTime { get; set; }
-        List<User> AcceptedUsers { get; set; }
+        public List<User> AcceptedUsers { get; set; }
+        public User Poster { get; set; }
         public Appointment()
         {
+
         }
     }
 }

@@ -14,5 +14,6 @@ namespace JapApp.Repositories
         Task AddAppToUser(AppointmentToUsers apptoUser);
         Task UpdateAppToUser(AppointmentToUsers apptoUser);
         Task RemoveAppToUser(AppointmentToUsers apptoUser);
+        Task<List<AppointmentToUsers>> GetAllAppointmentToUsers();
     }
 }

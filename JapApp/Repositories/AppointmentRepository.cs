@@ -1,16 +1,15 @@
-﻿using System;
+﻿      using System;
 using System.Threading.Tasks;
 using JapApp.Models;
 using SQLite;
 using System.IO;
+using System.Collections.Generic;
 
 namespace JapApp.Repositories
 {
     public class AppointmentRepository : IAppointmentRepository
     {
-        public AppointmentRepository()
-        {
-        }
+ 
 
         public event EventHandler<Appointment> OnAppointmentCreated;
         public event EventHandler<Appointment> OnAppointmentDeleted;
@@ -61,6 +60,12 @@ namespace JapApp.Repositories
             await CreateConnection();
             await connection.GetAsync<Appointment>(appointment);
             OnAppointmentDeleted?.Invoke(this, appointment);
+        }
+
+        public async Task<List<Appointment>> GetAllAppointments()
+        {
+            await CreateConnection();
+            return await connection.Table<Appointment>().ToListAsync();
         }
     }
 }
